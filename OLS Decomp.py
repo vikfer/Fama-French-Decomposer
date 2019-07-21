@@ -58,7 +58,7 @@ adjR2 = model.rsquared_adj
 fvalnew = 999
 brek = 0
 
-while brek < 10 and model.df_model > 2:
+while brek < 10 and model.df_model > 3:
     X_old = dc(X)
      
     X = remove_most_insignificant(X, model, model2)
