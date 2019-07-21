@@ -9,10 +9,6 @@ Created on Fri Apr 12 10:09:55 2019
 #Linear reg buffet
 
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from openpyxl import load_workbook
-import scipy
 import statsmodels.api as sm
 import operator
 import copy
@@ -62,7 +58,7 @@ adjR2 = model.rsquared_adj
 fvalnew = 999
 brek = 0
 
-while brek < 10 and model.df_model > 5:
+while brek < 10 and model.df_model > 3:
     X_old = dc(X)
      
     X = remove_most_insignificant(X, model, model2)
@@ -84,4 +80,6 @@ while brek < 10 and model.df_model > 5:
         brek += 1
             
             
+model = sm.OLS(Y, sm.add_constant(X), missing='drop').fit()
+model2 = sm.OLS(Y, X, missing='drop').fit()
 print(model.summary())
